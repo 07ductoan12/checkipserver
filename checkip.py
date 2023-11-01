@@ -5,6 +5,10 @@ import requests
 import subprocess
 import smtplib, ssl
 from email.message import EmailMessage
+email_sender = os.environ["EMAIL_SENDER"]
+email_password = os.environ["EMAIL_PASSWORD"]
+email_receiver = os.environ["EMAIL_RECEIVER"]
+
 
 
 def get_ip_address():
@@ -23,10 +27,6 @@ def check_internet_connection():
 
 
 def send_email(id_address: str) -> None:
-    email_sender = os.environ.get("EMAIL_SENDER")
-    email_password = os.environ.get("EMAIL_PASSWORD")
-    email_receiver = os.environ.get("EMAIL_RECEIVER")
-
     subject = "New ip address"
     body = "New ip address:+\n" + id_address
     email = EmailMessage()
@@ -55,6 +55,6 @@ if __name__ == "__main__":
                 send_email(curr_ip_address)
                 with open("./ip_address.txt", "w", encoding="utf-8") as file:
                     file.write(curr_ip_address)
-            time.sleep(60)
+            time.sleep(300)
         else:
-            time.sleep(60)
+            time.sleep(300)
