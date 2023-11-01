@@ -1,3 +1,4 @@
+from os.path import isfile
 import time
 import os
 import requests
@@ -43,6 +44,9 @@ def send_email(id_address: str) -> None:
 
 
 if __name__ == "__main__":
+    if not os.path.isfile("ip_address.txt"):
+        with open("ip_address.txt", "w", encoding="utf-8") as file:
+            file.write("")
     while True:
         if get_ip_address():
             with open("./ip_address.txt", "r", encoding="utf-8") as file:
