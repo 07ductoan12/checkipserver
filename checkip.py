@@ -2,7 +2,6 @@ from os.path import isfile
 import time
 import os
 import requests
-import yagmail
 import subprocess
 import smtplib, ssl
 from email.message import EmailMessage
